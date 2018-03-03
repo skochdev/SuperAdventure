@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    class World
+    public class World
     {
         public static readonly List<Item> Items = new List<Item>();
         public static readonly List<Monster> Monsters = new List<Monster>();
@@ -153,10 +153,10 @@ namespace Engine
             townSquare.LocationToNorth = alchemiestHut;
             townSquare.LocationToSouth = home;
             townSquare.LocationToEast = guardPost;
-            townSquare.locationToWest = farmhouse;
+            townSquare.LocationToWest = farmhouse;
 
             farmhouse.LocationToEast = townSquare;
-            farmhouse.locationToWest = farmersField;
+            farmhouse.LocationToWest = farmersField;
 
             farmersField.LocationToEast = farmhouse;
 
@@ -168,7 +168,7 @@ namespace Engine
             guardPost.LocationToEast = bridge;
             guardPost.LocationToEast = spiderField;
 
-            spiderField.locationToWest = bridge;
+            spiderField.LocationToWest = bridge;
 
             // Add the locations to the static list
             Locations.Add(home);
