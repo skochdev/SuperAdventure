@@ -89,15 +89,21 @@ namespace Engine
         {
             Quest clearAlchemiestGarden = new Quest(QUEST_ID_CLEAR_ALCHEMIEST_GARDEN,
                 "Clear alchemiest's garden", "Kill rats in the alchemiest's garden " +
-                "and bring back 3 rat tails. You will recieve a healing potion and 10 gold pieces.", 20, 10);
+                "and bring back 3 rat tails. You will recieve a healing potion" +
+                " and 10 gold pieces.", 20, 10);
 
-            clearAlchemiestGarden.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_RAT_TAIL), 3));
+            clearAlchemiestGarden.QuestCompletionItems.
+                Add(new QuestCompletionItem(ItemByID(ITEM_ID_RAT_TAIL), 3));
 
             clearAlchemiestGarden.RewardItem = ItemByID(ITEM_ID_HEALING_POTION);
 
-            Quest clearFarmersField = new Quest(QUEST_ID_CLEAR_FARMERS_FIELD, "Clear the farmer's field", "Kill snakes in the farmer's field and bring back 3 snake fangs. You will recieve an adventurer's pass and 20 gold pieces.", 20, 20);
+            Quest clearFarmersField = new Quest(QUEST_ID_CLEAR_FARMERS_FIELD,
+                "Clear the farmer's field", "Kill snakes in the farmer's field " +
+                "and bring back 3 snake fangs. You will recieve an adventurer's " +
+                "pass and 20 gold pieces.", 20, 20);
 
-            clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_SNAKE_FANG), 3));
+            clearFarmersField.QuestCompletionItems.
+                Add(new QuestCompletionItem(ItemByID(ITEM_ID_SNAKE_FANG), 3));
 
             clearFarmersField.RewardItem = ItemByID(ITEM_ID_ADVENTURER_PASS);
 
@@ -107,25 +113,32 @@ namespace Engine
 
         private static void PopulateLocations()
         {
-            // Create each location
-            Location home = new Location(LOCATION_ID_HOME, "Home", "Your house. You really need to clean  the place up regularly.");
+            // Create each location.
+            Location home = new Location(LOCATION_ID_HOME, "Home",
+                "Your house. You really need to clean  the place up regularly.");
 
-            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain.");
+            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square",
+                "You see a fountain.");
 
-            Location alchemiestHut = new Location(LOCATION_ID_ALCHEMIEST_HUT, "Alchemiests's hut", "There are many strange plants on the shelves.");
+            Location alchemiestHut = new Location(LOCATION_ID_ALCHEMIEST_HUT,
+                "Alchemiests's hut", "There are many strange plants on the shelves.");
             alchemiestHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIEST_GARDEN);
 
-            Location alchemiestGarden = new Location(LOCATION_ID_ALCHEMIEST_GARDEN, "Alchemiest's garen", "Many plants are growing here.");
+            Location alchemiestGarden = new Location(LOCATION_ID_ALCHEMIEST_GARDEN,
+                "Alchemiest's garen", "Many plants are growing here.");
             alchemiestGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
 
-            Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front.");
+            Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse",
+                "There is a small farmhouse, with a farmer in front.");
             farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
-            Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", "You see rows of vegetables growing here.");
+            Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", 
+                "You see rows of vegetables growing here.");
             farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
 
             Location guardPost = new Location(LOCATION_ID_GUARD_POST,
-                "Guard post", "There is a large, tough-looking guard here.", ItemByID(ITEM_ID_ADVENTURER_PASS));
+                "Guard post", "There is a large, tough-looking guard here.",
+                ItemByID(ITEM_ID_ADVENTURER_PASS));
 
             Location bridge = new Location(LOCATION_ID_BRIDGE,
                 "Bridge", "A stone bridge crosses a wide river.");
