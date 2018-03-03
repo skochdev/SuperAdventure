@@ -68,17 +68,17 @@ namespace Engine
         private static void PopulateMonsters()
         {
             Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 3, 10, 3, 3);
-            rat.LootTable.Add(new LootItem(getItemByID(ITEM_ID_RAT_TAIL), 75, false));
-            rat.LootTable.Add(new LootItem(getItemByID(ITEM_ID_PIECE_OF_FUR), 75, false));
+            rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_RAT_TAIL), 75, false));
+            rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_PIECE_OF_FUR), 75, false));
 
             Monster snake = new Monster(MONSTER_ID_SNAKE, "Snake", 5, 3, 10, 3, 3);
-            snake.LootTable.Add(new LootItem(getItemByID(ITEM_ID_SNAKE_FANG), 75, false));
-            snake.LootTable.Add(new LootItem(getItemByID(ITEM_ID_SNAKESKIN), 75, true));
+            snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKE_FANG), 75, false));
+            snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKESKIN), 75, true));
 
             Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER,
                 "Giant spider", 20, 5, 40, 10, 10);
-            giantSpider.LootTable.Add(new LootItem(getItemByID(ITEM_ID_SPIDER_FANG), 75, true));
-            giantSpider.LootTable.Add(new LootItem(getItemByID(ITEM_ID_SPIDER_SILK), 25, false));
+            giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_FANG), 75, true));
+            giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_SILK), 25, false));
 
             Monsters.Add(rat);
             Monsters.Add(snake);
@@ -91,15 +91,15 @@ namespace Engine
                 "Clear alchemiest's garden", "Kill rats in the alchemiest's garden " +
                 "and bring back 3 rat tails. You will recieve a healing potion and 10 gold pieces.", 20, 10);
 
-            clearAlchemiestGarden.QuestCompletionItems.Add(new QuestCompletionItem(getItemByID(ITEM_ID_RAT_TAIL), 3));
+            clearAlchemiestGarden.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_RAT_TAIL), 3));
 
-            clearAlchemiestGarden.RewardItem = getItemByID(ITEM_ID_HEALING_POTION);
+            clearAlchemiestGarden.RewardItem = ItemByID(ITEM_ID_HEALING_POTION);
 
             Quest clearFarmersField = new Quest(QUEST_ID_CLEAR_FARMERS_FIELD, "Clear the farmer's field", "Kill snakes in the farmer's field and bring back 3 snake fangs. You will recieve an adventurer's pass and 20 gold pieces.", 20, 20);
 
-            clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(getItemByID(ITEM_ID_SNAKE_FANG), 3));
+            clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_SNAKE_FANG), 3));
 
-            clearFarmersField.RewardItem = getItemByID(ITEM_ID_ADVENTURER_PASS);
+            clearFarmersField.RewardItem = ItemByID(ITEM_ID_ADVENTURER_PASS);
 
             Quests.Add(clearAlchemiestGarden);
             Quests.Add(clearFarmersField);
@@ -113,26 +113,26 @@ namespace Engine
             Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain.");
 
             Location alchemiestHut = new Location(LOCATION_ID_ALCHEMIEST_HUT, "Alchemiests's hut", "There are many strange plants on the shelves.");
-            alchemiestHut.QuestAvailableHere = getQuestByID(QUEST_ID_CLEAR_ALCHEMIEST_GARDEN);
+            alchemiestHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIEST_GARDEN);
 
             Location alchemiestGarden = new Location(LOCATION_ID_ALCHEMIEST_GARDEN, "Alchemiest's garen", "Many plants are growing here.");
-            alchemiestGarden.MonsterLivingHere = getMonsterByID(MONSTER_ID_RAT);
+            alchemiestGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
 
             Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front.");
-            farmhouse.QuestAvailableHere = getQuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
+            farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
             Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", "You see rows of vegetables growing here.");
-            farmersField.MonsterLivingHere = getMonsterByID(MONSTER_ID_SNAKE);
+            farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
 
             Location guardPost = new Location(LOCATION_ID_GUARD_POST,
-                "Guard post", "There is a large, tough-looking guard here.", getItemByID(ITEM_ID_ADVENTURER_PASS));
+                "Guard post", "There is a large, tough-looking guard here.", ItemByID(ITEM_ID_ADVENTURER_PASS));
 
             Location bridge = new Location(LOCATION_ID_BRIDGE,
                 "Bridge", "A stone bridge crosses a wide river.");
 
             Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD,
                 "Forest", "You see spider webs covering the threes in this forest.");
-            spiderField.MonsterLivingHere = getMonsterByID(MONSTER_ID_GIANT_SPIDER);
+            spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
 
             // Link the location together
             home.LocationToNorth = townSquare;
@@ -169,7 +169,7 @@ namespace Engine
             Locations.Add(spiderField);
         }
 
-        public static Item getItemByID(int id)
+        public static Item ItemByID(int id)
         {
             foreach(Item item in Items)
             {
@@ -182,7 +182,7 @@ namespace Engine
             return null;
         }
 
-        public static Monster getMonsterByID(int id)
+        public static Monster MonsterByID(int id)
         {
             foreach(Monster monster in Monsters)
             {
@@ -195,7 +195,7 @@ namespace Engine
             return null;
         }
 
-        public static Quest getQuestByID(int id)
+        public static Quest QuestByID(int id)
         {
             foreach(Quest quest in Quests)
             {
@@ -208,7 +208,7 @@ namespace Engine
             return null;
         }
 
-        public static Location getLocationByID(int id)
+        public static Location LocationByID(int id)
         {
             foreach(Location location in Locations)
             {
